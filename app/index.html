@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoho MCP Assistant</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Import Anthropic SDK (we might need a build step for this, using a placeholder for now) -->
+    <!-- For a raw widget without build tools, we'll use fetch directly or a CDN if available -->
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Zoho MCP Assistant</h1>
+            <div id="status" class="status disconnected">Disconnected</div>
+        </header>
+        
+        <div id="chat-history" class="chat-history">
+            <div class="message system">
+                Welcome! I can help you interact with Zoho CRM and Mail.
+                <br>Try asking: "Get me the latest 5 leads"
+            </div>
+        </div>
+
+        <div class="input-area">
+            <textarea id="user-input" placeholder="Type your request here..."></textarea>
+            <button id="send-btn">Send</button>
+        </div>
+        
+        <div class="controls">
+            <button id="tools-btn" class="secondary-btn">List Tools</button>
+            <button id="clear-btn" class="secondary-btn">Clear Chat</button>
+            <button id="settings-btn" class="secondary-btn">Settings</button>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Configuration</h2>
+            <div class="form-group">
+                <label for="api-key">Claude API Key:</label>
+                <input type="password" id="api-key" placeholder="sk-ant-...">
+            </div>
+            <div class="form-group">
+                <label for="mcp-url">Zoho MCP URL:</label>
+                <input type="text" id="mcp-url" placeholder="https://tss-xxx.zohomcp.com/mcp/...">
+            </div>
+            <div class="form-group">
+                <label for="proxy-url">Proxy URL (production mein zaroori):</label>
+                <input type="text" id="proxy-url" placeholder="https://your-proxy.onrender.com">
+                <small style="color:#888;">Deploy proxy_server.py aur uska URL yahan daalein. Local pe khali chhod sakte hain.</small>
+            </div>
+            <div class="modal-actions">
+                <button id="save-settings">Save</button>
+                <button id="close-settings">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+    <script type="module">
+        import { App } from './js/app.js';
+        window.app = new App();
+    </script>
+</body>
+</html>

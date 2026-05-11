@@ -1,0 +1,15 @@
+{
+  "service": "CREATOR",
+  "cspDomains": {
+    "connect-src": [
+      "https://api.anthropic.com",
+      "http://localhost:8083",
+      "https://*.zoho.com",
+      "https://*.zohopublic.com",
+      "https://*.zohomcp.com"
+    ]
+  },
+  "index": "index.html",
+  "version": "1.0",
+  "name": "Zoho MCP AI Assistant"
+}

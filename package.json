@@ -1,0 +1,23 @@
+{
+    "name": "zoho-mcp-widget",
+    "version": "1.0.0",
+    "description": "Zoho MCP Client Widget",
+    "main": "app/widget.html",
+    "scripts": {
+        "start": "npx http-server app -p 8000",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "zoho",
+        "widget",
+        "mcp",
+        "claude",
+        "ai"
+    ],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "http-server": "^14.1.1",
+        "portfinder": "^1.0.38"
+    }
+}
