@@ -4,7 +4,7 @@
     "description": "Zoho MCP Client Widget",
     "main": "app/widget.html",
     "scripts": {
-        "start": "npx http-server app -p 8000",
+        "start": "npx http-server app -p 8000 -c-1",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [

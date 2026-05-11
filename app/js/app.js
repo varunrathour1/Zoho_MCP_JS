@@ -92,7 +92,7 @@ export class App {
     openSettings() {
         this.apiKeyInput.value = this.config.CLAUDE_API_KEY;
         this.mcpUrlInput.value = this.config.ZOHO_MCP_URL;
-        this.proxyUrlInput.value = this.config.PROXY_URL || '';
+        if (this.proxyUrlInput) this.proxyUrlInput.value = this.config.PROXY_URL || '';
         this.settingsModal.classList.remove('hidden');
     }
 
@@ -103,7 +103,7 @@ export class App {
     saveSettings() {
         const key = this.apiKeyInput.value.trim();
         const url = this.mcpUrlInput.value.trim();
-        const proxyUrl = this.proxyUrlInput.value.trim();
+        const proxyUrl = this.proxyUrlInput ? this.proxyUrlInput.value.trim() : '';
 
         if (key && url) {
             this.config.save(key, url, proxyUrl);
@@ -185,3 +185,4 @@ export class App {
 
         return html;
     }
+}

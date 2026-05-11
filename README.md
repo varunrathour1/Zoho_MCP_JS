@@ -71,6 +71,8 @@ You need **two terminals**: one for the CORS proxy and one for the web server.
    ```
    Opens at `http://localhost:8000`.
 
+   > **Accessing from another device on the same network?** Use `http://192.168.x.x:8000`. Note: you'll need to re-enter Settings since localStorage is browser/origin specific.
+
 3. **Configure credentials** in the browser:
    - Click **Settings** in the app.
    - Enter your **Claude API Key**.

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zoho MCP Assistant</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=1.1">
     <!-- Import Anthropic SDK (we might need a build step for this, using a placeholder for now) -->
     <!-- For a raw widget without build tools, we'll use fetch directly or a CDN if available -->
 </head>
@@ -58,10 +58,14 @@
         </div>
     </div>
 
-    <script type="module" src="js/app.js"></script>
     <script type="module">
-        import { App } from './js/app.js';
-        window.app = new App();
+        import { App } from './js/app.js?v=4';
+        try {
+            window.app = new App();
+        } catch(e) {
+            console.error('App init failed:', e);
+            document.getElementById('status').textContent = 'Init Error: ' + e.message;
+        }
     </script>
 </body>
 </html>
