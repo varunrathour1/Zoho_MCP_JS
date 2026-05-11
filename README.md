@@ -67,9 +67,9 @@ You need **two terminals**: one for the CORS proxy and one for the web server.
 
 2. **Start the web server**:
    ```bash
-   npx http-server app
+   npm start
    ```
-   Opens at `http://localhost:8080`.
+   Opens at `http://localhost:8000`.
 
 3. **Configure credentials** in the browser:
    - Click **Settings** in the app.

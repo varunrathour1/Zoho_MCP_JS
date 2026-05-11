@@ -1,0 +1,17 @@
+# No external Python packages required.
+# proxy_server.py uses only Python standard library modules:
+#   - http.server
+#   - socketserver
+#   - urllib.request
+#   - urllib.error
+#   - json
+#   - os
+#
+# Requirements:
+#   Python >= 3.7
+#
+# To verify your Python version:
+#   python --version
+#
+# To run the proxy:
+#   python proxy_server.py
