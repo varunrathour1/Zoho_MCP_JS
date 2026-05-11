@@ -6,7 +6,7 @@ import json
 import os
 from http import HTTPStatus
 
-PORT = 8083
+PORT = int(os.environ.get('PORT', 8083))
 
 class ProxyHandler(http.server.SimpleHTTPRequestHandler):
     def do_OPTIONS(self):
