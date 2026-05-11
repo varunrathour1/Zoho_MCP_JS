@@ -9,6 +9,15 @@ from http import HTTPStatus
 PORT = int(os.environ.get('PORT', 8083))
 
 class ProxyHandler(http.server.SimpleHTTPRequestHandler):
+    def do_GET(self):
+        if self.path == '/healthz':
+            self.send_response(200)
+            self.send_header('Content-Type', 'text/plain')
+            self.end_headers()
+            self.wfile.write(b'OK')
+        else:
+            self.send_error(404, "Not Found")
+
     def do_OPTIONS(self):
         self.send_response(200)
         self.send_header('Access-Control-Allow-Origin', '*')
