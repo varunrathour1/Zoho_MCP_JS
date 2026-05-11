@@ -6,7 +6,8 @@
       "http://localhost:8083",
       "https://*.zoho.com",
       "https://*.zohopublic.com",
-      "https://*.zohomcp.com"
+      "https://*.zohomcp.com",
+      "https://*.onrender.com"
     ]
   },
   "index": "index.html",
