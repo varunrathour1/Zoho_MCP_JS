@@ -143,8 +143,45 @@ export class App {
     addMessage(text, type) {
         const div = document.createElement('div');
         div.className = `message ${type}`;
-        div.textContent = text;
+        if (type === 'assistant') {
+            div.innerHTML = this._renderMarkdown(text);
+        } else {
+            div.textContent = text;
+        }
         this.chatHistory.appendChild(div);
         this.chatHistory.scrollTop = this.chatHistory.scrollHeight;
     }
-}
+
+    _renderMarkdown(text) {
+        // Escape HTML first
+        let html = text
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+
+        // Tables
+        html = html.replace(/((?:^\|.+\|\s*\n)+)/gm, (table) => {
+            const rows = table.trim().split('\n');
+            let out = '<table>';
+            rows.forEach((row, i) => {
+                if (/^\|[-| ]+\|$/.test(row.trim())) return; // skip separator
+                const cells = row.split('|').filter((_, idx, arr) => idx > 0 && idx < arr.length - 1);
+                const tag = i === 0 ? 'th' : 'td';
+                out += '<tr>' + cells.map(c => `<${tag}>${c.trim().replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</${tag}>`).join('') + '</tr>';
+            });
+            return out + '</table>';
+        });
+
+        // Bold
+        html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        // Italic
+        html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+        // Inline code
+        html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+        // Bullet lists
+        html = html.replace(/^- (.+)$/gm, '<li>$1</li>').replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>');
+        // Line breaks
+        html = html.replace(/\n/g, '<br>');
+
+        return html;
+    }

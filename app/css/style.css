@@ -99,6 +99,37 @@ h1 {
     color: #721c24;
 }
 
+.message.assistant table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 8px 0;
+    font-size: 0.9em;
+}
+
+.message.assistant table th,
+.message.assistant table td {
+    border: 1px solid #ccc;
+    padding: 6px 10px;
+    text-align: left;
+}
+
+.message.assistant table th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+.message.assistant table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.message.assistant code {
+    background: #f0f0f0;
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-family: monospace;
+    font-size: 0.9em;
+}
+
 .input-area {
     padding: 1rem;
     border-top: 1px solid var(--border-color);
