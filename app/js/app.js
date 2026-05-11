@@ -79,6 +79,14 @@ export class App {
         this.statusEl.textContent = 'Connected';
         this.statusEl.className = 'status connected';
         this.addMessage('System ready. API keys loaded.', 'system');
+
+        // Keep Render free instance alive — ping every 4 minutes
+        if (this.config.PROXY_URL) {
+            if (this._keepAliveInterval) clearInterval(this._keepAliveInterval);
+            this._keepAliveInterval = setInterval(() => {
+                fetch(`${this.config.PROXY_URL}/healthz`).catch(() => {});
+            }, 4 * 60 * 1000);
+        }
     }
 
     openSettings() {
